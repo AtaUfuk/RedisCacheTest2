@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisCacheTest2.WebUI", "RedisCacheTest2.WebUI\RedisCacheTest2.WebUI.csproj", "{DEC882BA-C802-4530-8FF3-780E0B13ECEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisCacheTest2.Lib", "RedisCacheTest2.Lib\RedisCacheTest2.Lib.csproj", "{00BFC1E7-9C52-4222-B449-DED9BC2BC29B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisCacheTest2.RestApi", "RedisCacheTest2.RestApi\RedisCacheTest2.RestApi.csproj", "{EF66BC5F-DAF4-464B-89DD-3A679E4ED66D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{B494A696-10C4-43A9-B140-0C064A6DFEAB}"
+	ProjectSection(SolutionItems) = preProject
+		..\RedisCacheTest\RedisDockerCommands.txt = ..\RedisCacheTest\RedisDockerCommands.txt
+		..\RedisCacheTest\UsedThirtPartyLibraries.txt = ..\RedisCacheTest\UsedThirtPartyLibraries.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEC882BA-C802-4530-8FF3-780E0B13ECEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC882BA-C802-4530-8FF3-780E0B13ECEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC882BA-C802-4530-8FF3-780E0B13ECEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC882BA-C802-4530-8FF3-780E0B13ECEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00BFC1E7-9C52-4222-B449-DED9BC2BC29B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00BFC1E7-9C52-4222-B449-DED9BC2BC29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00BFC1E7-9C52-4222-B449-DED9BC2BC29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00BFC1E7-9C52-4222-B449-DED9BC2BC29B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF66BC5F-DAF4-464B-89DD-3A679E4ED66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF66BC5F-DAF4-464B-89DD-3A679E4ED66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF66BC5F-DAF4-464B-89DD-3A679E4ED66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF66BC5F-DAF4-464B-89DD-3A679E4ED66D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBFF0D8C-2C6D-4682-829F-03BC7D103ECB}
+	EndGlobalSection
+EndGlobal
