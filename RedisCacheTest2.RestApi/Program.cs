@@ -1,3 +1,5 @@
+using RedisCacheTest2.Lib.Cache;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSingleton<IRedisCacheMem, RedisCacheMem>();
 builder.Services.AddRouting();
 var app = builder.Build();
 

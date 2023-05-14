@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using RedisCacheTest2.Lib.Cache;
 using RedisCacheTest2.WebUI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.InstanceName = "RedisDemo_";
     options.Configuration = builder.Configuration.GetConnectionString("Redis");
 });
+builder.Services.AddSingleton<IRedisCacheMem, RedisCacheMem>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
