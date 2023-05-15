@@ -19,7 +19,7 @@ namespace RedisCacheTest2.Lib.Cache
             IConfiguration configuration = builder.Build();
             _redisOptions = new()
             {
-                Configuration = configuration.GetConnectionString("Redis") + ",allowAdmin=true"//allowAdmin parameter use for clear all database keys
+                Configuration = configuration.GetConnectionString("Redis") + ",allowAdmin=true"/*allowAdmin parameter use for clear all database keys*/
             };
             _connectionMultiplexer = ConnectionMultiplexer.Connect(_redisOptions.Configuration);
             _cache = _connectionMultiplexer.GetDatabase();
@@ -113,7 +113,7 @@ namespace RedisCacheTest2.Lib.Cache
             {
                 await _cache.KeyDeleteAsync(_instanceName + recordId);
             }
-            else if(_cache.KeyExists(recordId))
+            else if (_cache.KeyExists(recordId))
             {
                 await _cache.KeyDeleteAsync(recordId);
             }
