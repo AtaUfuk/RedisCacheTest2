@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using StackExchange.Redis;
 using System.Text.Json;
-
 namespace RedisCacheTest2.Lib.Cache
 {
     public class RedisCacheMem : IRedisCacheMem
@@ -20,7 +19,7 @@ namespace RedisCacheTest2.Lib.Cache
             IConfiguration configuration = builder.Build();
             _redisOptions = new()
             {
-                Configuration = configuration.GetConnectionString("Redis") + ",allowAdmin=true"
+                Configuration = configuration.GetConnectionString("Redis") + ",allowAdmin=true"//allowAdmin parameter use for clear all database keys
             };
             _connectionMultiplexer = ConnectionMultiplexer.Connect(_redisOptions.Configuration);
             _cache = _connectionMultiplexer.GetDatabase();
@@ -68,11 +67,13 @@ namespace RedisCacheTest2.Lib.Cache
             }
             else if (expireType == "M")
             {
-                ts = TimeSpan.FromDays(_expireNumber * 30);
+                DateTime now = DateTime.Now;
+                ts = DateTime.Now.AddMonths((int)_expireNumber) - now;
             }
             else if (expireType == "Y")
             {
-                ts = TimeSpan.FromDays(_expireNumber * 365);
+                DateTime now = DateTime.Now;
+                ts = DateTime.Now.AddYears((int)_expireNumber) - now;
             }
             await _cache.StringSetAsync(_instanceName + recordId, jsonData, ts);
         }
@@ -95,13 +96,39 @@ namespace RedisCacheTest2.Lib.Cache
             }
             else if (expireType == "M")
             {
-                ts = TimeSpan.FromDays(_expireNumber * 30);
+                DateTime now = DateTime.Now;
+                ts = DateTime.Now.AddMonths((int)_expireNumber) - now;
             }
             else if (expireType == "Y")
             {
-                ts = TimeSpan.FromDays(_expireNumber * 365);
+                DateTime now = DateTime.Now;
+                ts = DateTime.Now.AddYears((int)_expireNumber) - now;
             }
             await _cache.StringSetAsync(_instanceName + recordId, jsonData, ts);
+        }
+
+        public async Task Remove(string recordId)
+        {
+            if (_cache.KeyExists(_instanceName + recordId) && recordId.IndexOf(_instanceName) < 0)
+            {
+                await _cache.KeyDeleteAsync(_instanceName + recordId);
+            }
+            else if(_cache.KeyExists(recordId))
+            {
+                await _cache.KeyDeleteAsync(recordId);
+            }
+        }
+
+        public async Task RemoveAllKeys()
+        {
+            var endpoint = _connectionMultiplexer.GetEndPoints(true).First();
+            var server = _connectionMultiplexer.GetServer(endpoint);
+            string pattern = $"{_instanceName}*";
+            RedisKey[] redisKeys = server.Keys(pattern: pattern).ToArray();
+            foreach (var key in redisKeys)
+            {
+                await Remove(key);
+            }
         }
     }
 }

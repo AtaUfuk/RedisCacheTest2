@@ -6,5 +6,7 @@
         Task SetRecordAsync<T>(string recordId, T data);
         Task SetorUpdateRecordAsync<T>(string recordId, T data);
         void ClearAll();
+        Task Remove(string recordId);
+        Task RemoveAllKeys();
     }
 }

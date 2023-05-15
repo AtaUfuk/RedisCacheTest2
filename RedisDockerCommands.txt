@@ -3,4 +3,4 @@
 3)select 0 => This codes get first database in redis list
 4)dbsize => This is get database count
 5)scan 0 => Give us item to the list any key or item redis has
-6)hgetall redis_cache_id (for example hgetall RedisDemo_WeatherForCasts_20210410_1135)
+6)hgetall redis_cache_id (for example hgetall RedisDemo_WeatherForCasts_20210410_1135) => get information 

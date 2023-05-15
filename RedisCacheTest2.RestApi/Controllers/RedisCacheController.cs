@@ -37,5 +37,19 @@ namespace RedisCacheTest2.RestApi.Controllers
             _redisCacheMem.ClearAll();
             return Ok("Clear Cache Second Called");
         }
+        [Route("/remove-key")]
+        [HttpGet]
+        public IActionResult RemoveKey([FromQuery]string key)
+        {
+            _redisCacheMem.Remove(key);
+            return Ok(key + " removed");
+        }
+        [Route("/remove-keys")]
+        [HttpGet]
+        public IActionResult RemoveKeys()
+        {
+            _redisCacheMem.RemoveAllKeys();
+            return Ok("all keys removed");
+        }
     }
 }
