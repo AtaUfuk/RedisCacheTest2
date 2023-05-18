@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using RedisCacheTest2.Lib.Cache;
 using RedisCacheTest2.WebUI.Data;
 
@@ -10,10 +8,11 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.InstanceName = "RedisDemo_";
+    options.InstanceName = builder.Configuration.GetValue<string>("MemoryCacheOptions:InstanceName");
     options.Configuration = builder.Configuration.GetConnectionString("Redis");
 });
 builder.Services.AddSingleton<IRedisCacheMem, RedisCacheMem>();
+builder.Services.AddSingleton<IDistributedRedisCache, DistributedRedisCache>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

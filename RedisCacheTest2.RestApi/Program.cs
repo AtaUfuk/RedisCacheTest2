@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSingleton<IRedisCacheMem, RedisCacheMem>();
+builder.Services.AddSingleton<IDistributedRedisCache, DistributedRedisCache>();
 builder.Services.AddRouting();
 var app = builder.Build();
 

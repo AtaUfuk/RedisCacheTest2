@@ -1,10 +1,9 @@
-﻿@page "/redis-cache"
-@using Microsoft.Extensions.Caching.Distributed;
+﻿@page "/distributed-cache-without-extension"
 @using RedisCacheTest2.Lib.Cache;
 @using RedisCacheTest2.WebUI.Data
 @using RedisCacheTest2.Lib.Extensions
 @inject WeatherForecastService ForecastService
-@inject IRedisCacheMem cache
+@inject IDistributedRedisCache cache
 <PageTitle>Weather forecast</PageTitle>
 
 <h1>Weather forecast</h1>
@@ -49,12 +48,13 @@ else
     private WeatherForecast[]? forecasts;
     private string loadLocation = "";
     private string isCacheData = "";
-    private int counter = 1;
+    private int counter = 3;
+    private string ClearAllResponse = string.Empty;
     protected override async Task OnInitializedAsync()
     {
         forecasts = null;
         loadLocation = null;
-        string recordKey = "WeatherForCasts_" + counter;
+        string recordKey = "WeatherForCasts_Without_Extension" + counter;
         forecasts = await cache.GetRecordAsync<WeatherForecast[]>(recordKey);
         if (object.Equals(forecasts, null))
         {
