@@ -52,8 +52,6 @@ else
     private int counter = 1;
     protected override async Task OnInitializedAsync()
     {
-        forecasts = null;
-        loadLocation = null;
         string recordKey = "WeatherForCasts_" + counter;
         forecasts = await cache.GetRecordAsync<WeatherForecast[]>(recordKey);
         if (object.Equals(forecasts, null))

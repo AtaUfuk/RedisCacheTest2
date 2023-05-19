@@ -1,4 +1,4 @@
-First off all you should need the install two package from Nuget
+First off all you should need the install three package from Nuget
 1)Microsoft.Extensions.Caching.StackExchangeRedis
 2)Microsoft.Extensions.Configuration
 3)Microsoft.Extensions.Configuration.Json
